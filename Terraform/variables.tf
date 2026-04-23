@@ -33,12 +33,17 @@ variable "ec2-instance-count" {
   description = "Number of EC2 instances to create"
 }
 
-variable "ec2-intance-type" {
+variable "ec2_instance_type" {
   type        = list(string)
   description = "List of EC2 instance types to use for each instance"
 }
 
-variable "ec2-volume-size" {
+variable "ec2_volume_type" {
+    type = string
+    description = "Type of EBS volume (e.g., gp3, gp2, io1 )"
+}
+
+variable "ec2_volume_size" {
   type        = number
   description = "Size of the EBS volume in GB"
 }
