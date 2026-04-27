@@ -1,10 +1,10 @@
 variable "aws-region" {
-  type = string
+  type        = string
   description = "AWS region to deploy resources in"
 }
 
 variable "env" {
-  type = string
+  type        = string
   description = "Environment name (e.g., dev, staging, prod)"
 }
 
@@ -14,8 +14,8 @@ variable "cidr-block" {
 }
 
 variable "pub-cidr-block" {
-    type = list(string)
-    description = "List of CIDR blocks for public subnets"
+  type        = list(string)
+  description = "List of CIDR blocks for public subnets"
 }
 
 variable "pub-subnet-count" {
@@ -39,8 +39,8 @@ variable "ec2_instance_type" {
 }
 
 variable "ec2_volume_type" {
-    type = string
-    description = "Type of EBS volume (e.g., gp3, gp2, io1 )"
+  type        = string
+  description = "Type of EBS volume (e.g., gp3, gp2, io1 )"
 }
 
 variable "ec2_volume_size" {
