@@ -21,7 +21,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = {
     Name = "${local.org}-${local.project}-${local.env}-igw"
-    env  = var.env
+    Env  = local.env
   }
 
   depends_on = [aws_vpc.vpc]
@@ -35,8 +35,8 @@ resource "aws_subnet" "public-subnet" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "${local.org}-${local.project}-${local.env}-public-subnet-${count.index - 1}"
-    Env  = var.env
+    Name = "${local.org}-${local.project}-${local.env}-public-subnet-${count.index}"
+    Env  = local.env
   }
 
   depends_on = [aws_vpc.vpc]
