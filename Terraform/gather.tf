@@ -1,4 +1,4 @@
-data "aws_ami" "ubuntu" {
+data "aws_iam" "ubuntu" {
   most_recent = true
 
   filter {
