@@ -1,6 +1,6 @@
 locals {
-  org     = "cloudtest"
-  project = "netflix-clone"
+  org     = var.org
+  project = var.project
   env     = var.env
 }
 
@@ -17,7 +17,7 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vpc.vpc_id
+  vpc_id = aws_vpc.vpc.id
 
   tags = {
     Name = "${local.org}-${local.project}-${local.env}-igw"
@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_subnet" "public-subnet" {
   count                   = var.pub-subnet-count
-  vpc_id                  = aws_vpc.vpc.vpc_id
+  vpc_id                  = aws_vpc.vpc.id
   cidr_block              = element(var.pub-cidr-block, count.index)
   availability_zone       = element(var.pub-availability-zone, count.index)
   map_public_ip_on_launch = true
@@ -70,7 +70,7 @@ resource "aws_route_table_association" "public-rta" {
 }
 
 resource "aws_security_group" "default-ec2-sg" {
-  name        = "${local.org}-${local-project}-${local.env}-sg"
+  name        = "${local.org}-${local.project}-${local.env}-sg"
   description = "Default Security Group"
 
   vpc_id = aws_vpc.vpc.id

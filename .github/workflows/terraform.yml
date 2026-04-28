@@ -1,17 +1,17 @@
-name: 'Infraestructure configuring using Terraform on AWS'
+name: "Infraestructure configuring using Terraform on AWS"
 
 on:
   workflow_dispatch:
     inputs:
       action:
         type: choice
-        description: 'Terraform Action'
+        description: "Terraform Action"
         options:
           - plan
           - apply
           - destroy
         required: true
-        default: 'plan'
+        default: "plan"
 
 env:
   TF_API_TOKEN: ${{ secrets.TF_API_TOKEN }}
@@ -24,7 +24,7 @@ jobs:
   infraestructure-setup-using-terraform:
     name: Terraform ${{ github.event.input.actions }}
     runs-on: ubuntu-24.04
-    environment: production
+    environment: dev
 
     defaults:
       run:
@@ -38,9 +38,14 @@ jobs:
       - name: Setting Up the Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: '1.13.3'
+          terraform_version: "1.13.3"
           terraform_wrapper: true
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN}}
+
+      - name: Create def.auto.tfvars from Secret
+        run: echo "$TF_VARS_CONTENT" > def.auto.tfvars
+        env:
+          TF_VARS_CONTENT: ${{ secrets.TF_AUTO_TFVARS }}
 
       - name: Cache Terraform
         uses: actions/cache@v4

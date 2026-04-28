@@ -47,3 +47,13 @@ variable "ec2_volume_size" {
   type        = number
   description = "Size of the EBS volume in GB"
 }
+
+variable "org" {
+  type        = string
+  description = "Cloud terraform organization"
+}
+
+variable "project" {
+  type        = string
+  description = "Project name on terraform cloud"
+}
