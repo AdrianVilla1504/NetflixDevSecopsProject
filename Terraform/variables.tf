@@ -35,12 +35,12 @@ variable "ec2-instance-count" {
 
 variable "ec2_instance_type" {
   type        = string
-  description = "List of EC2 instance types to use for each instance"
+  description = "EC2 instance type (e.g., t2.micro or t3.micro)"
 }
 
 variable "ec2_volume_type" {
   type        = string
-  description = "Type of EBS volume (e.g., gp3, gp2, io1 )"
+  description = "Type of EBS volume (gp2 is safer for Free Tier validation)"
 }
 
 variable "ec2_volume_size" {
@@ -56,4 +56,9 @@ variable "org" {
 variable "project" {
   type        = string
   description = "Project name on terraform cloud"
+}
+
+variable "workspace" {
+  type        = string
+  description = "Workspace name on terraform cloud"
 }
