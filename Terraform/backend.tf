@@ -8,11 +8,8 @@ terraform {
   }
 
   cloud {
-    organization = secrets.TF_CLOUD_ORGANIZATION
-    workspaces {
-      name = secrets.TF_WORKSPACE
-    }
   }
+
 }
 
 provider "aws" {
