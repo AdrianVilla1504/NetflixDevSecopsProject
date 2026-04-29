@@ -34,7 +34,7 @@ variable "ec2-instance-count" {
 }
 
 variable "ec2_instance_type" {
-  type        = list(string)
+  type        = string
   description = "List of EC2 instance types to use for each instance"
 }
 
