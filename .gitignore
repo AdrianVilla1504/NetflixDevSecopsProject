@@ -64,6 +64,7 @@ build-env/
 .github/workflows/secrets
 .gitlab-ci.yml.local
 .circleci/local
+*Jenkinsfile.groovy
 
 # Git
 .git
