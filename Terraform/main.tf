@@ -18,7 +18,7 @@ resource "aws_instance" "ec2" {
   # SCRIPT PARA HABILITAR SWAP (2GB)
   user_data = <<-EOF
               #!/bin/bash
-              fallocate -l 2G /swapfile
+              fallocate -l 8G /swapfile
               chmod 600 /swapfile
               mkswap /swapfile
               swapon /swapfile
