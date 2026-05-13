@@ -9,13 +9,13 @@ spec:
   selector:
     matchLabels:
       app: netflix-app
-    template:
-      metadata:
-        labels:
-          app: netflix-app
-      spec:
-        containers:
-        - name: netflix-app
-          image: avian19/netflix:latest
-          ports:
-          - containerPort: 80
+  template:
+    metadata:
+      labels:
+        app: netflix-app
+    spec:
+      containers:
+      - name: netflix-app
+        image: adrianvilla1504/netflix:latest
+        ports:
+        - containerPort: 80
